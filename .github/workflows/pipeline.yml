@@ -100,7 +100,7 @@ jobs:
       - name: Build image
         run: docker build -t "${IMAGE}:${GITHUB_SHA}" .
       - name: Trivy - dependency / filesystem scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           scan-type: fs
           scan-ref: .
@@ -108,7 +108,7 @@ jobs:
           ignore-unfixed: true
           exit-code: "1"
       - name: Trivy - container image scan (fail on CRITICAL)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           scan-type: image
           image-ref: "${{ env.IMAGE }}:${{ github.sha }}"
